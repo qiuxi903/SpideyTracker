@@ -3,9 +3,9 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# 依赖（纯 JS 模块，直接复制，服务器免联网安装）
+# 依赖在容器内安装（不同平台各自编译，避免跨平台 node_modules 问题）
 COPY package.json package-lock.json ./
-COPY node_modules ./node_modules
+RUN npm install --omit=dev
 
 # 应用代码
 COPY server ./server

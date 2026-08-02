@@ -99,6 +99,30 @@ function sendVerifyCode(email, code) {
     const logPath = path.join(__dirname, 'verify-codes.log');
     fs.appendFileSync(logPath, new Date().toISOString() + ' ' + line + '\n', 'utf8');
   } catch (e) { /* 写文件失败不影响流程 */ }
+
+  // SMTP 真实邮件（可选）：.env 设置 SMTP_ENABLED=true 并填写 SMTP_* 后启用
+  if (String(process.env.SMTP_ENABLED) === 'true') {
+    try {
+      const nodemailer = require('nodemailer');
+      const smtpPort = Number(process.env.SMTP_PORT || 465);
+      const transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST || '',
+        port: smtpPort,
+        secure: smtpPort === 465,
+        auth: { user: process.env.SMTP_USER || '', pass: process.env.SMTP_PASS || '' },
+      });
+      transporter.sendMail({
+        from: process.env.SMTP_FROM || process.env.SMTP_USER || '寻找小蜘蛛',
+        to: email,
+        subject: '寻找小蜘蛛 - 注册验证码',
+        text: `你的注册验证码是：${code}，5 分钟内有效。`,
+        html: `<p>你的注册验证码是：<b style="font-size:20px">${code}</b></p><p>5 分钟内有效，请勿泄露。</p>`,
+      }).then(() => console.log('  [SMTP] 验证码邮件已发送至 ' + email))
+        .catch((e) => console.warn('  [SMTP] 邮件发送失败:', e.message));
+    } catch (e) {
+      console.warn('  [SMTP] 发送配置错误（请检查 .env 的 SMTP_*）:', e.message);
+    }
+  }
 }function signToken(uid) {
   return jwt.sign({ uid }, JWT_SECRET, { expiresIn: '30d' });
 }

@@ -6,6 +6,9 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASS}
       MYSQL_DATABASE: spidey_tracker
+      # 应用使用的数据库用户（非 root，.env 中 DB_USER 可自定义，默认 spidey）
+      MYSQL_USER: ${DB_USER:-spidey}
+      MYSQL_PASSWORD: ${DB_PASS}
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
       - mysql-data:/var/lib/mysql
@@ -28,7 +31,7 @@ services:
     environment:
       DB_HOST: mysql
       DB_PORT: "3306"
-      DB_USER: root
+      DB_USER: ${DB_USER:-spidey}
       DB_PASS: ${DB_PASS}
       DB_NAME: spidey_tracker
       JWT_SECRET: ${JWT_SECRET}
