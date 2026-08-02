@@ -17,7 +17,7 @@
 
 - **后端**：Node.js + Express + MySQL 8
 - **前端**：原生 JS + 高德地图（AMap 适配层）
-- **部署**：Docker + Docker Compose（MySQL + App 双容器）
+- **部署**：Docker Compose（App  容器）
 
 ## 本地运行
 
