@@ -18,3 +18,4 @@ deploy-pkg/
 Thumbs.db
 # Windows 绝对路径符号链接（部署时由 Dockerfile 重建）
 spideytracker.net/images
+*.bat
