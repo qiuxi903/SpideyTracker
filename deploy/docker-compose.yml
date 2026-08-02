@@ -1,39 +1,16 @@
 services:
-  mysql:
-    image: mysql:8.0
-    container_name: spidey-mysql
-    restart: unless-stopped
-    environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASS}
-      MYSQL_DATABASE: spidey_tracker
-      # 应用使用的数据库用户（非 root，.env 中 DB_USER 可自定义，默认 spidey）
-      MYSQL_USER: ${DB_USER:-spidey}
-      MYSQL_PASSWORD: ${DB_PASS}
-    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-    volumes:
-      - mysql-data:/var/lib/mysql
-      - ./init:/docker-entrypoint-initdb.d:ro
-    healthcheck:
-      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
-      interval: 5s
-      timeout: 5s
-      retries: 30
-
   app:
     build: .
     container_name: spidey-app
     restart: unless-stopped
-    depends_on:
-      mysql:
-        condition: service_healthy
-    ports:
-      - "8899:8899"
+    # 使用宿主机网络：直接连接服务器自带的 MySQL（127.0.0.1）
+    network_mode: host
     environment:
-      DB_HOST: mysql
-      DB_PORT: "3306"
+      DB_HOST: ${DB_HOST:-127.0.0.1}
+      DB_PORT: ${DB_PORT:-3306}
       DB_USER: ${DB_USER:-spidey}
       DB_PASS: ${DB_PASS}
-      DB_NAME: spidey_tracker
+      DB_NAME: ${DB_NAME:-spidey_tracker}
       JWT_SECRET: ${JWT_SECRET}
       PORT: "8899"
       # SMTP 邮箱配置（.env 填写后传入容器）
@@ -47,5 +24,4 @@ services:
       - uploads-data:/app/spideytracker.net/uploads
 
 volumes:
-  mysql-data:
   uploads-data:

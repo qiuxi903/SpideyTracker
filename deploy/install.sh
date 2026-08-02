@@ -17,15 +17,16 @@ if [ ! -f .env ]; then
   echo "✓ 已生成 .env"
 fi
 
-# 3) 设置数据库密码（DB_PASS 为空时）
+# 3) 设置数据库连接（DB_PASS 为空时，填写服务器 MySQL 密码）
 if grep -qE "^DB_PASS=$" .env; then
-  echo "数据库密码为空，请设置："
-  read -r -p "输入数据库密码（留空自动生成随机密码）: " dbpass
+  echo "使用服务器自带的 MySQL，请填写数据库密码："
+  read -r -p "数据库密码（必填）: " dbpass
   if [ -z "$dbpass" ]; then
-    dbpass=$(openssl rand -hex 12 2>/dev/null || head -c 24 /dev/urandom | od -An -tx1 | tr -d ' \n')
+    echo "❌ 密码不能为空（连接的是服务器 MySQL）"
+    exit 1
   fi
   sed -i "s/^DB_PASS=.*/DB_PASS=$dbpass/" .env
-  echo "✓ 数据库密码已设置"
+  echo "✓ 数据库密码已设置（DB_HOST/DB_USER/DB_NAME 请在 .env 中确认）"
 fi
 
 # 4) 生成 JWT_SECRET（为空时）
