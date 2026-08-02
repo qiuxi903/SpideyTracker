@@ -1,0 +1,638 @@
+{
+  "init": {
+    "general": {
+      "seo": {
+        "title": "寻找小蜘蛛",
+        "description": "通过官方寻找小蜘蛛，追踪蜘蛛侠的行踪。",
+        "keywords": "蜘蛛侠, 寻找小蜘蛛, 蜘蛛侠目击, 地图追踪",
+        "shareImage": "./images/shareImage/shareImage.jpg",
+        "ogTitle": "寻找小蜘蛛",
+        "ogDescription": "通过官方寻找小蜘蛛，追踪蜘蛛侠的行踪。",
+        "twitterTitle": "寻找小蜘蛛",
+        "twitterDescription": "通过官方寻找小蜘蛛，追踪蜘蛛侠的行踪。"
+      },
+      "header": {
+        "sonyPicturesAriaLabel": "",
+        "sonyPicturesAlt": "",
+        "sonyAriaLabel": "",
+        "sonyAlt": ""
+      },
+      "mainUi": {
+        "log": "日志",
+        "webWatch": "网络观察",
+        "reportSighting": "报告目击",
+        "video": "视频",
+        "legend": "?",
+        "soundOffAlt": "关闭音效",
+        "soundOnAlt": "开启音效"
+      },
+      "legend": {
+        "title": "图例",
+        "ariaLabel": "地图图例",
+        "closeAriaLabel": "关闭图例",
+        "intro": "与地图互动，查看遍布全世界的蜘蛛侠目击。为了让你熟悉我的寻找小蜘蛛，这里有一份全部功能的图例。祝你玩得开心，开始寻找吧！",
+        "featuresAriaLabel": "图例功能",
+        "items": {
+          "confirmed": "已确认的蜘蛛侠目击",
+          "reported": "传闻中的蜘蛛侠目击",
+          "messageCenter": "消息中心",
+          "audio": "音效开关",
+          "neighborhood": "定位到你的街区",
+          "globalMap": "全球地图"
+        }
+      },
+      "preMap": {},
+      "soundOptIn": {
+        "ariaLabel": "音效偏好",
+        "headline": "欢迎来到寻找小蜘蛛。\n与地图互动，查看\n遍布全世界的\n蜘蛛侠目击。",
+        "continueLabel": "选择你的设置，开始追踪",
+        "soundOnText": "开启音效",
+        "soundOffText": "关闭音效"
+      },
+      "tutorial": {
+        "autoCloseTimer": 7000
+      },
+      "inTrackerVideoPlayer": {
+        "ariaLabel": "开场视频",
+        "unmuteAriaLabel": "点击取消静音",
+        "unmuteText": "点击取消静音",
+        "skipText": "跳过"
+      },
+      "startupVideo": {
+        "enabled": false,
+        "medium": "youtube",
+        "title": "来自内德的消息",
+        "src": "https://www.youtube.com/watch?v=0ceb-6OoJw8",
+        "teaserSiteMode": {
+          "enabled": false,
+          "showSoundOptIn": true,
+          "hideSoundToggle": false,
+          "tickerMsg": "敬请期待",
+          "tickerBehavior": "scroll",
+          "replayButtonText": "重播视频"
+        },
+        "teaserSiteModeWithVideo": {
+          "enabled": false,
+          "allowSoundOnPlay": true,
+          "tickerMsg": "明日发布",
+          "tickerBehavior": "scroll",
+          "ctaText": "观看我们的创始人兼CEO\n内德·利兹的消息",
+          "playBtnText": "播放视频"
+        }
+      },
+      "frameUi": {
+        "trackerLogoAlt": "追踪器标志",
+        "spideyFigureAriaLabel": "蜘蛛侠模型"
+      },
+      "languageToggle": {
+        "enabled": false,
+        "currentLanguage": {
+          "text": "EN"
+        },
+        "optionalLanguage": {
+          "text": "FR",
+          "url": "https://spidey.tracker.net"
+        }
+      },
+      "pushNotification": {
+        "enabled": false,
+        "messageText": "是否启用三星专属通知？",
+        "yesLabel": "是",
+        "noLabel": "否",
+        "enablingText": "正在启用…",
+        "enabledText": "已启用"
+      },
+      "mainMenu": {
+        "ariaLabel": "主导航菜单",
+        "closeAriaLabel": "关闭主菜单",
+        "closeText": "关闭",
+        "navAriaLabel": "主导航",
+        "eventsToast": "活动即将上线",
+        "items": {
+          "authLogin": {
+            "label": "登录 / 注册",
+            "show": true
+          },
+          "userPanel": {
+            "label": "用户",
+            "show": false
+          },
+          "reportSightings": {
+            "label": "报告目击",
+            "show": true
+          },
+          "activityLog": {
+            "label": "活动日志",
+            "show": true
+          },
+          "webWatch": {
+            "label": "网络观察",
+            "show": true
+          },
+          "videos": {
+            "label": "视频",
+            "show": false
+          },
+          "events": {
+            "label": "活动",
+            "show": false
+          },
+          "help": {
+            "label": "帮助",
+            "show": true
+          },
+          "getTickets": {
+            "label": "购票",
+            "show": false
+          },
+          "samsungDownloads": {
+            "label": "三星专属下载",
+            "show": true,
+            "exclusive": true
+          }
+        }
+      },
+      "tracking": {
+        "allowVideoSectionTracking": true
+      },
+      "lightbox": {
+        "closeAriaLabel": "关闭",
+        "closeText": "关闭",
+        "singleImageAlt": "灯箱内容",
+        "singleIFrameTitle": "购票",
+        "videoGalleryKicker": "正在播放：",
+        "hideVideoListAriaLabel": "隐藏视频列表",
+        "previousVideosAriaLabel": "上一个视频",
+        "nextVideosAriaLabel": "下一个视频"
+      },
+      "samsungExclusives": {
+        "title": "三星专属",
+        "closeAriaLabel": "关闭三星专属",
+        "closeText": "关闭"
+      },
+      "activityLog": {
+        "title": "活动日志",
+        "closeAriaLabel": "关闭活动日志",
+        "closeText": "关闭",
+        "badgeTrailer": "预告片",
+        "badgeReported": "传闻",
+        "badgeEvent": "活动",
+        "badgeConfirmed": "已确认",
+        "sectionExplainer": {
+          "enabled": true,
+          "headerText": "活动日志说明",
+          "closeButtonText": "关闭",
+          "bodyText": "看看吧——我建了一个实时更新的蜘蛛侠目击与活动清单，确保你能看到所有最新动态。"
+        }
+      },
+      "webWatch": {
+        "panelAriaLabel": "网络观察面板",
+        "title": "网络观察 1.0",
+        "closeAriaLabel": "关闭网络观察",
+        "closeText": "关闭",
+        "previousArticleAriaLabel": "上一篇",
+        "nextArticleAriaLabel": "下一篇",
+        "sectionExplainer": {
+          "enabled": true,
+          "headerText": "网络观察说明",
+          "closeButtonText": "关闭",
+          "bodyText": "Honestly, it's hard to keep track of all the bad guys Spidey takes on, so I've started a collection with all the info I've put together from sightings."
+        }
+      },
+      "eventsPanel": {
+        "title": "活动",
+        "panelAriaLabel": "活动面板",
+        "closeAriaLabel": "关闭活动",
+        "closeText": "关闭",
+        "emptyText": "暂无可用活动。",
+        "dateTbd": "日期待定",
+        "showImageAriaLabel": "显示第 {n} 张图片",
+        "previousImageAriaLabel": "上一张图片",
+        "nextImageAriaLabel": "下一张图片",
+        "watchVideoText": "观看视频",
+        "sectionExplainer": {
+          "enabled": true,
+          "headerText": "活动说明",
+          "closeButtonText": "关闭",
+          "bodyText": "My sources tell me that Spider-Man might be making an appearance at some events… If you want to pop in yourself, they're all listed here."
+        }
+      },
+      "notificationCenter": {
+        "dismissAriaLabel": "关闭通知",
+        "newSightingsSingular": "发现 {n} 个新目击",
+        "newSightingsPlural": "发现 {n} 个新目击",
+        "unexploredSingular": "{n} 个未查看的目击",
+        "unexploredPlural": "{n} 个未查看的目击"
+      },
+      "map2D": {
+        "streetviewBackText": "返回地图",
+        "startView": "worldmap"
+      },
+      "helpScreen": {
+        "ariaLabel": "Help",
+        "closeAriaLabel": "关闭帮助",
+        "closeText": "关闭",
+        "introText": "欢迎！这是一份帮助你熟悉体验的便捷指南。",
+        "confirmedPinAlt": "已确认目击标记",
+        "rumoredPinAlt": "传闻目击标记",
+        "eventPinAlt": "活动标记",
+        "confirmedTooltip": "已确认\\n目击",
+        "rumoredTooltip": "传闻\\n目击",
+        "eventTooltip": "活动",
+        "centerMapTooltip": "地图居中",
+        "globalMapTooltip": "全球地图",
+        "navigationTooltip": "导航",
+        "msgCenterTooltip": "消息\\n中心",
+        "mapFiltersTooltip": "地图筛选"
+      },
+      "map3D": {
+        "backTo2DText": "返回地图",
+        "tiltUp": "向上倾斜",
+        "rotateLeft": "向左旋转",
+        "rotateRight": "向右旋转",
+        "tiltDown": "向下倾斜"
+      },
+      "mapFilters": {
+        "panelAriaLabel": "地图筛选",
+        "confirmedTitle": "切换已确认目击",
+        "rumoredTitle": "切换传闻目击",
+        "confirmedOnToast": "已确认目击：开",
+        "confirmedOffToast": "已确认目击：关",
+        "rumoredOnToast": "传闻目击：开",
+        "rumoredOffToast": "传闻目击：关"
+      },
+      "radar": {
+        "zoomGlobal": "缩放到全球视图",
+        "centerLocation": "以我的位置为中心",
+        "toastZoomGlobal": "正在缩放到全球视图",
+        "toastCenterLocation": "正在定位到你的街区",
+        "toastCenterLocationError": "无法确定街区位置",
+        "zoomGlobalAlt": "缩放到全球",
+        "centerAlt": "居中"
+      },
+      "msgCenter": {
+        "alertAriaLabel": "消息提醒",
+        "tickerAriaLabel": "状态滚动",
+        "openSightingImageAriaLabel": "打开目击图片",
+        "defaultLabel": "传闻目击",
+        "defaultTitle": "蜘蛛侠目击",
+        "tickerByHandle": "@{handle} 的目击",
+        "tickerFromX": "来自 X（推特）的目击"
+      },
+      "footer": {
+        "creditsTitle": "鸣谢",
+        "closeCreditsAriaLabel": "关闭鸣谢面板",
+        "brandAlt": "蜘蛛侠：崭新之日",
+        "releaseDateAlt": "上映日期",
+        "samsungAlt": "由三星提供支持",
+        "legalAriaLabel": "法律链接",
+        "copyright": "© & ™ 2026 MARVEL. ©2026 CPII and TSG Entertainment II LLC.",
+        "legalLinks": [
+          {
+            "text": "隐私政策",
+            "url": "https://intl.sonypictures.com/en/privacy-policy",
+            "target": "_blank"
+          },
+          {
+            "text": "使用条款",
+            "url": "https://intl.sonypictures.com/en/terms-of-use",
+            "target": "_blank"
+          },
+          {
+            "text": "Cookie 同意工具",
+            "url": "javascript:OneTrust.ToggleInfoDisplay();",
+            "target": "_self"
+          },
+          {
+            "id": "credits",
+            "text": "鸣谢",
+            "url": "#",
+            "target": "_self"
+          }
+        ],
+        "footerCreditsLinks": [
+          {
+            "text": "隐私政策",
+            "url": "https://intl.sonypictures.com/en/privacy-policy",
+            "target": "_blank"
+          },
+          {
+            "text": "使用条款",
+            "url": "https://intl.sonypictures.com/en/terms-of-use",
+            "target": "_blank"
+          },
+          {
+            "text": "Cookie 同意工具",
+            "url": "javascript:OneTrust.ToggleInfoDisplay();",
+            "target": "_self"
+          }
+        ]
+      }
+    },
+    "consentModals": {
+      "video": {
+        "header": "我们使用 Cookie",
+        "content": "<div class=\"video-blocked-msg\"><p>要在此网站观看视频，你需要启用特定 Cookie。</p><p><button class=\"btn btn-primary\" id=\"btn-show-consent-toggle\" tabindex=\"-1\">隐私设置</button></p></div>"
+      },
+      "ticketing": {
+        "header": "需要功能性 Cookie",
+        "content": "要查看购票选项，请在隐私设置中启用功能性 Cookie。<p style=\"margin-top:18px;\"><a href=\"javascript:OneTrust.ToggleInfoDisplay();\" class=\"btn btn-primary\">隐私设置</a></p>"
+      }
+    },
+    "watchTrailer": {
+      "buttonText": "观看预告片",
+      "ariaLabel": "观看预告片",
+      "show": true,
+      "trailerSrc": "https://www.youtube.com/watch?v=P3uI5sLosKU",
+      "trailerTitle": "官方预告片 3"
+    },
+    "getTickets": {
+      "buttonText": "购票",
+      "ariaLabel": "购票",
+      "ticketingAlt": "购票界面",
+      "show": false,
+      "widget": {
+        "enabled": true,
+        "assetBaseUrl": "d33t5dshwl6j0s.cloudfront.net/movies/spidermanbrandnewday/us/",
+        "jquerySrc": "d33t5dshwl6j0s.cloudfront.net/movies/spidermanbrandnewday/us/assets/js/jquery-3.6.0.min.js",
+        "scriptSrc": "d33t5dshwl6j0s.cloudfront.net/movies/spidermanbrandnewday/us/assets/js/sycaconst.js"
+      },
+      "linkOutToUrl": "",
+      "iframeUrl": "d33t5dshwl6j0s.cloudfront.net/movies/spidermanbrandnewday/us/index.html",
+      "imageUrl": ""
+    },
+    "pinCards": {
+      "viewSightingText": "查看目击",
+      "playTrailerText": "播放预告片",
+      "viewIn3dText": "3D 查看",
+      "view360Text": "360 查看",
+      "viewEventText": "查看活动"
+    },
+    "tickerMessages": {
+      "appLoading": "加载中",
+      "helpScreenTutorial": "点击跳过",
+      "helpScreenClose": "点击关闭",
+      "preMapScreen": "加载中",
+      "preloaderTapToLaunch": "点击启动",
+      "preloaderSelectSoundOption": "选择音效选项",
+      "startupVideoIncoming": "收到来自内德的消息",
+      "liveMapShare": "快把你的蜘蛛侠目击分享到社区！"
+    },
+    "preloader": {
+      "dangleClearancePx": 5,
+      "lines": [
+        "正在初始化寻找小蜘蛛 v4.2.0…",
+        "启动核心服务 [OK]",
+        "正在初始化地图渲染管线…",
+        "加载基础资源：界面框架 [OK]",
+        "加载基础资源：滚动模块 [OK]",
+        "启动事件总线 [OK]",
+        "校准精灵图渲染器 [OK]",
+        "预热图片缓存…",
+        "检查字体注册表 [OK]",
+        "验证路由处理器 [OK]",
+        "构建 API 连接池…",
+        "验证会话令牌 [OK]",
+        "运行开机自检：通过",
+        "验证功能开关 [OK]",
+        "预加载关键界面组件…",
+        "挂载覆盖层控制器 [OK]",
+        "同步状态存储 [OK]",
+        "正在初始化灯箱路由…",
+        "检查媒体门控 [OK]",
+        "修补回退处理器 [OK]",
+        "扫描模块依赖…",
+        "解析异步任务队列 [OK]",
+        "编译启动日志缓冲区…",
+        "验证运行时配置 [OK]",
+        "启动健康监控 [OK]",
+        "例行检查：内存清理",
+        "例行检查：网络就绪",
+        "例行检查：资源已验证",
+        "例行检查：覆盖层就绪",
+        "准备实时更新循环…",
+        "启用遥测钩子 [OK]",
+        "正在初始化同意安全媒体路径…",
+        "安全通道已建立 [OK]",
+        "所有系统正常 — 追踪器在线"
+      ]
+    }
+  },
+  "xFeed": {
+    "title": "寻找小蜘蛛",
+    "closeAriaLabel": "关闭面板",
+    "closeText": "关闭",
+    "panelAriaLabel": "社区目击动态",
+    "postsAriaLabel": "社区目击帖子",
+    "handle": "寻找小蜘蛛",
+    "endpoint": "./x-feed.php",
+    "xFeedApiRefreshCacheFrequency": 3600,
+    "maxPosts": 20,
+    "emptyText": "暂无帖子。",
+    "errorText": "暂时无法加载社区动态。",
+    "loadingText": "正在加载帖子…",
+    "reportCtaText": "发布目击",
+    "stickyPost": {
+      "bodyText": "有蜘蛛侠目击？快来社区发布你的发现吧。别忘了带上地点——交叉路口、城市、国家，你能拍到什么信息我都要。一起找出蜘蛛侠！"
+    }
+  },
+  "spideyPins": [],
+  "videoGallery": {
+    "videos": [
+      {
+        "title": "官方预告片 3",
+        "src": "https://www.youtube.com/watch?v=P3uI5sLosKU",
+        "default": true
+      },
+      {
+        "title": "内德访谈 2",
+        "src": "https://www.youtube.com/watch?v=Yxz25mD3-9w&t=17s",
+        "default": true
+      },
+      {
+        "title": "官方预告片 2",
+        "src": "https://www.youtube.com/watch?v=Q27BvUipKn8",
+        "default": true
+      },
+      {
+        "title": "内德访谈",
+        "src": "https://www.youtube.com/watch?v=0ceb-6OoJw8",
+        "default": true
+      },
+      {
+        "title": "官方预告片 1",
+        "src": "https://www.youtube.com/watch?v=8TZMtslA3UY",
+        "default": true
+      }
+    ]
+  },
+  "webwatch": {
+    "articles": [
+      {
+        "image": "./images/web_watch/scorpion.jpg",
+        "name": "蝎子",
+        "desc": "感觉蜘蛛侠和蝎子之间有点旧账，不过也可能是我多想了。他那条致命的机械尾巴，你可千万别被蜇到。"
+      },
+      {
+        "image": "./images/web_watch/boomerang.jpg",
+        "name": "回旋镖",
+        "desc": "他的名字好记，武器可不好躲。回旋镖靠的是（没错，就是）各种有不同能力的特殊回旋镖战斗。"
+      },
+      {
+        "image": "./images/web_watch/tarantula.jpg",
+        "name": "狼蛛",
+        "desc": "狼蛛用带毒的靴子当武器，小心他的脚。好在蜘蛛侠反应神速。"
+      },
+      {
+        "image": "./images/web_watch/hand.jpg",
+        "name": "手合会",
+        "desc": "谁能告诉我纽约怎么又冒出一群忍者？一身红的造型是挺酷，但这想悄悄行动可有点难。"
+      },
+      {
+        "image": "./images/web_watch/punisher.jpg",
+        "name": "惩罚者",
+        "desc": "他是蜘蛛侠的朋友吗？有人看到他们一起出现，但看起来又不总是一伙的。不管怎样，我可不想得罪他（如果他有好脾气的话）。"
+      },
+      {
+        "image": "./images/web_watch/unknown.jpg",
+        "name": "未知",
+        "desc": "城里流传着一个新神秘反派的消息。有任何风声都发给我，这家伙很难追踪。"
+      }
+    ]
+  },
+  "404page": {
+    "message": "哇，蜘蛛侠目击已经爆满了！请稍后再来。"
+  },
+  "soundTriggers": {
+    "preloaderOptIn": {
+      "category": "preloader",
+      "enabled": true
+    },
+    "notificationAlert": {
+      "category": "notification",
+      "enabled": true
+    },
+    "activityLog": {
+      "category": "activity",
+      "enabled": true
+    },
+    "webwatch": {
+      "category": "webwatch",
+      "enabled": true
+    },
+    "events": {
+      "category": "events",
+      "enabled": true
+    },
+    "xFeed": {
+      "category": "xFeed",
+      "enabled": true
+    },
+    "punisherSightings": {
+      "category": "punisher",
+      "enabled": true
+    },
+    "handSightings": {
+      "category": "hand",
+      "enabled": true
+    },
+    "generalSightings": {
+      "category": "general",
+      "enabled": true
+    }
+  },
+  "registeredSounds": {
+    "ned_bites": [
+      {
+        "name": "spidey_jingle",
+        "src": "./sounds/spidey_jingle.mp3",
+        "category": "notification"
+      },
+      {
+        "name": "welcome_to_the_Spidey_Tracker",
+        "src": "flash.sonypictures.com/movies/spidermanbrandnewday/sounds/ned_sound_bites/welcome_to_the_Spidey_Tracker.MP3",
+        "category": "preloader"
+      },
+      {
+        "name": "Spidey's_on_the_move_adding_some_hot_sightings_to_",
+        "src": "flash.sonypictures.com/movies/spidermanbrandnewday/sounds/ned_sound_bites/Spidey's_on_the_move_adding_some_hot_sightings_to_.MP3",
+        "category": ""
+      },
+      {
+        "name": "a_brand_new_day_brand_new_sightings",
+        "src": "flash.sonypictures.com/movies/spidermanbrandnewday/sounds/ned_sound_bites/a_brand_new_day_brand_new_sightings.MP3",
+        "category": "preloader, general"
+      },
+      {
+        "name": "another_day_another_sighting",
+        "src": "flash.sonypictures.com/movies/spidermanbrandnewday/sounds/ned_sound_bites/another_day_another_sighting.MP3",
+        "category": "preloader, activity, webwatch, xFeed, general"
+      },
+      {
+        "name": "are_Punisher_and_Spidey_teaming_up",
+        "src": "flash.sonypictures.com/movies/spidermanbrandnewday/sounds/ned_sound_bites/are_Punisher_and_Spidey_teaming_up.MP3",
+        "category": "webwatch, punisher"
+      },
+      {
+        "name": "are_those_ninjas_in_New_York_City",
+        "src": "flash.sonypictures.com/movies/spidermanbrandnewday/sounds/ned_sound_bites/are_those_ninjas_in_New_York_City.MP3",
+        "category": "webwatch, hand"
+      },
+      {
+        "name": "calling_all_webheads_we've_got_some_fresh_sighting",
+        "src": "flash.sonypictures.com/movies/spidermanbrandnewday/sounds/ned_sound_bites/calling_all_webheads_we've_got_some_fresh_sighting.MP3",
+        "category": "preloader, activity"
+      },
+      {
+        "name": "getting_some_Spidey_sightings_from_all_over_the_wo",
+        "src": "flash.sonypictures.com/movies/spidermanbrandnewday/sounds/ned_sound_bites/getting_some_Spidey_sightings_from_all_over_the_wo2.MP3",
+        "category": "preloader, activity, general"
+      },
+      {
+        "name": "got_some_new_info_on_the_mysterious_presence_check",
+        "src": "flash.sonypictures.com/movies/spidermanbrandnewday/sounds/ned_sound_bites/got_some_new_info_on_the_mysterious_presence_check.MP3",
+        "category": "webwatch"
+      },
+      {
+        "name": "keep_getting_reports_of_a_mysterious_presence_in_t",
+        "src": "flash.sonypictures.com/movies/spidermanbrandnewday/sounds/ned_sound_bites/keep_getting_reports_of_a_mysterious_presence_in_t.MP3",
+        "category": "webwatch"
+      },
+      {
+        "name": "keep_sending_in_those_sightings,_I've_got_everythi",
+        "src": "flash.sonypictures.com/movies/spidermanbrandnewday/sounds/ned_sound_bites/keep_sending_in_those_sightings,_I've_got_everythi.MP3",
+        "category": "xFeed, general"
+      },
+      {
+        "name": "my_watch_gave_me_a_quick_glance_alert_like_five_se",
+        "src": "flash.sonypictures.com/movies/spidermanbrandnewday/sounds/ned_sound_bites/my_watch_gave_me_a_quick_glance_alert_like_five_se.MP3",
+        "category": ""
+      },
+      {
+        "name": "new_sightings_just_came_in...adding_them_now",
+        "src": "flash.sonypictures.com/movies/spidermanbrandnewday/sounds/ned_sound_bites/new_sightings_just_came_in...adding_them_now.MP3",
+        "category": "activity, preloader"
+      },
+      {
+        "name": "our_first_meet_ups_have_been_posted_in_event_updat",
+        "src": "flash.sonypictures.com/movies/spidermanbrandnewday/sounds/ned_sound_bites/our_first_meet_ups_have_been_posted_in_event_updat.MP3",
+        "category": "events"
+      },
+      {
+        "name": "seeing_a_lot_of_Spidey_sightings_at_theaters_today",
+        "src": "flash.sonypictures.com/movies/spidermanbrandnewday/sounds/ned_sound_bites/seeing_a_lot_of_Spidey_sightings_at_theaters_today.MP3",
+        "category": ""
+      },
+      {
+        "name": "seeing_reports_of_people_hearing_a_voice_in_their_",
+        "src": "flash.sonypictures.com/movies/spidermanbrandnewday/sounds/ned_sound_bites/seeing_reports_of_people_hearing_a_voice_in_their_.MP3",
+        "category": "webwatch"
+      },
+      {
+        "name": "ton_of_new_sightings_came_in_overnight_check_out_t",
+        "src": "flash.sonypictures.com/movies/spidermanbrandnewday/sounds/ned_sound_bites/ton_of_new_sightings_came_in_overnight_check_out_t.MP3",
+        "category": "preloader"
+      }
+    ]
+  }
+}

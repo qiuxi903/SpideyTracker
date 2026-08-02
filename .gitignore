@@ -1,0 +1,20 @@
+# 环境与密钥（切勿提交）
+.env
+*.log
+
+# 依赖
+node_modules/
+
+# 用户数据（上传图片、数据库导出）
+spideytracker.net/uploads/
+deploy/init/*.sql
+
+# 构建/部署产物
+spidey-tracker-deploy.tar.gz
+deploy-pkg/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+# Windows 绝对路径符号链接（部署时由 Dockerfile 重建）
+spideytracker.net/images

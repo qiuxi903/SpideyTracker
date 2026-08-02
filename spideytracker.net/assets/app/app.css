@@ -1,0 +1,880 @@
+/* ============================================================
+   寻找小蜘蛛 · 用户系统样式（登录/报告目击/我的记录）
+   直接复用主站素材：
+   - 弹窗边框：images/frame 15 宫格框架（frame1/2/5 系列，与主页同款）
+   - 按钮：ui/buttons/btn-yellow|red|black 三段拼图（主站 UIButton 同款）
+   - 关闭：ui/buttons/x_btn.svg
+   - 内容区：黑底 #000（页面 frame2-2 同款）+ 青色 #96e0f7 + Videotext 字体
+   ============================================================ */
+
+/* ---------- 通用弹窗（主站页面框架 15 宫格结构） ---------- */
+.app-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease;
+  font-family: "PF Videotext Pro", "Microsoft YaHei", sans-serif;
+}
+.app-modal-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+/* 网格：顶 36px + 内容 + 底 50px 装饰 + 7px 收尾（主页 fifteen-slice-frame 同参数） */
+.app-modal {
+  display: grid;
+  grid-template-columns: 36px 1fr 36px;
+  grid-template-rows: 36px 1fr 50px 7px;
+  width: min(480px, 94vw);
+  max-height: 86vh;
+  filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.65));
+  transform: translateY(12px);
+  transition: transform 0.24s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.app-modal-overlay.is-open .app-modal {
+  transform: translateY(0);
+}
+.app-modal.is-wide {
+  width: min(580px, 96vw);
+}
+/* 框架格素材（参数与主页 .frame-rXcY 相同） */
+.app-fr {
+  background-repeat: no-repeat;
+}
+.app-fr--t-l {
+  background-image: url("../../img/images/frame/frame1-1.png");
+  background-size: 36px 36px;
+}
+.app-fr--t-c {
+  background-image: url("../../img/images/frame/frame1-2.png");
+  background-size: 92px 36px;
+  background-repeat: repeat-x;
+}
+.app-fr--t-r {
+  background-image: url("../../img/images/frame/frame1-3.png");
+  background-size: 36px 36px;
+}
+.app-fr--m-l {
+  background-image: url("../../img/images/frame/frame2-1.png");
+  background-size: 36px 100px;
+  background-repeat: repeat-y;
+}
+.app-fr--m-r {
+  background-image: url("../../img/images/frame/frame2-3.png");
+  background-size: 36px 100px;
+  background-repeat: repeat-y;
+}
+.app-fr--b1-l {
+  background-image: url("../../img/images/frame/frame5-1.png");
+  background-size: 36px 7px;
+}
+.app-fr--b1-c {
+  background-image: url("../../img/images/frame/frame5-2.png");
+  background-size: 27px 7px;
+  background-repeat: repeat-x;
+}
+.app-fr--b1-r {
+  background-image: url("../../img/images/frame/frame5-3.png");
+  background-size: 36px 7px;
+}
+/* 底部装饰行（主页 row4 同款 frame4 系列） */
+.app-fr--b2-l {
+  background-image: url("../../img/images/frame/frame4-1.png");
+  background-size: 36px 50px;
+}
+.app-fr--b2-c {
+  background-image: url("../../img/images/frame/frame4-2.png");
+  background-size: 95px 50px;
+  background-repeat: repeat-x;
+}
+.app-fr--b2-r {
+  background-image: url("../../img/images/frame/frame4-3.png");
+  background-size: 36px 50px;
+}
+/* 内容区：黑底（页面 frame2-2 同款） */
+.app-modal__content {
+  grid-area: 2 / 2 / 3 / 3;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  background: #000;
+}
+/* 头顶蜘蛛侠 logo */
+.app-modal__logo {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 2px;
+  flex: 0 0 auto;
+}
+.app-modal__logo img {
+  width: 34px;
+  height: 36px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+/* 底部蜘蛛侠（主页左下角同款素材，参数与主页一致）：
+   素材 SpiderMan_HeadTurn.png = 76 帧 × 74px/帧（5624px 宽）
+   主页显示：bg-size 4484px（76帧×59px），12fps → 76帧/12 ≈ 6.33s 一圈 */
+.app-modal__spidey {
+  width: 46px;
+  height: 72px;
+  margin: 4px 0 6px 10px;
+  flex: 0 0 auto;
+  background: url("../../img/images/SpiderMan_HeadTurn.png") no-repeat left top;
+  background-size: 3496px 72px; /* 76 帧 × 46px */
+  image-rendering: pixelated;
+  animation: app-spidey-turn 5s steps(76) infinite;
+}
+@keyframes app-spidey-turn {
+  from { background-position: 0 0; }
+  to { background-position: -3496px 0; }
+}
+.app-modal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px 8px;
+  border-bottom: 1px dashed rgba(150, 224, 247, 0.35);
+}
+.app-modal__title {
+  font-size: 15px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #96e0f7;
+  margin: 0;
+}
+.app-modal__close {
+  width: 22px;
+  height: 22px;
+  border: 0;
+  background: url("../../img/images/ui/buttons/x_btn.svg") no-repeat center / contain;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.15s ease;
+}
+.app-modal__close:hover {
+  opacity: 1;
+}
+.app-modal__body {
+  padding: 16px;
+  overflow-y: auto;
+  color: #cfe8f7;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ---------- 表单控件 ---------- */
+.app-field {
+  margin-bottom: 14px;
+}
+.app-field__label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #96e0f7;
+}
+.app-input,
+.app-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 9px 12px;
+  border: 2px solid rgba(150, 224, 247, 0.4);
+  background: #0d0d0d;
+  color: #e8f7ff;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  caret-color: #96e0f7;
+  transition: border-color 0.15s ease;
+}
+.app-input:focus,
+.app-textarea:focus {
+  border-color: #96e0f7;
+}
+.app-input::placeholder,
+.app-textarea::placeholder {
+  color: #3d4d5e;
+}
+.app-textarea {
+  resize: vertical;
+  min-height: 72px;
+}
+.app-input.is-error,
+.app-textarea.is-error {
+  border-color: #ff6b6b;
+}
+.app-error-msg {
+  color: #ff8080;
+  font-size: 12px;
+  min-height: 18px;
+  margin: 2px 0 8px;
+}
+
+/* ---------- 按钮（主站 btn 三段拼图素材） ---------- */
+.app-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 41px;
+  padding: 0 14px;
+  background-color: transparent;
+  background-image: url("../../img/images/ui/buttons/btn-yellow-2.png");
+  background-repeat: repeat-x;
+  background-size: 72px 41px;
+  color: #000;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: inherit;
+  border: 0;
+  transition: filter 0.15s ease;
+}
+.app-btn::before,
+.app-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 9px;
+  background-repeat: no-repeat;
+  background-size: 9px 41px;
+  pointer-events: none;
+}
+.app-btn::before {
+  left: 0;
+  background-image: url("../../img/images/ui/buttons/btn-yellow-1.png");
+}
+.app-btn::after {
+  right: 0;
+  background-image: url("../../img/images/ui/buttons/btn-yellow-3.png");
+}
+.app-btn:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+.app-btn:active:not(:disabled) {
+  filter: brightness(0.92);
+}
+.app-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+/* 主按钮：红色素材 */
+.app-btn--primary {
+  background-image: url("../../img/images/ui/buttons/btn-red-2.png");
+  background-size: 72px 41px;
+  color: #fff;
+}
+.app-btn--primary::before {
+  background-image: url("../../img/images/ui/buttons/btn-red-1.png");
+}
+.app-btn--primary::after {
+  background-image: url("../../img/images/ui/buttons/btn-red-3.png");
+}
+.app-btn--block {
+  width: 100%;
+}
+.app-btn--ghost {
+  background: transparent;
+  background-image: none;
+  color: #96e0f7;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  height: auto;
+  padding: 6px 8px;
+}
+.app-btn--ghost::before,
+.app-btn--ghost::after {
+  display: none;
+}
+.app-btn.is-danger {
+  background-image: url("../../img/images/ui/buttons/btn-black-2.png");
+  background-size: 72px 41px;
+  color: #fff;
+}
+.app-btn.is-danger::before {
+  background-image: url("../../img/images/ui/buttons/btn-black-1.png");
+}
+.app-btn.is-danger::after {
+  background-image: url("../../img/images/ui/buttons/btn-black-3.png");
+}
+
+/* ---------- Tab 切换（网站菜单链接风格：无外框，青色文字 + 激活下划线） ---------- */
+.app-tabs {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 16px;
+  border-bottom: 1px dashed rgba(150, 224, 247, 0.3);
+  padding-bottom: 6px;
+}
+.app-tab {
+  padding: 4px 2px;
+  border: 0;
+  background: transparent;
+  color: #96e0f7;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: inherit;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.app-tab:hover {
+  color: #ffffff;
+}
+.app-tab.is-active {
+  color: #ffffff;
+  border-bottom-color: #96e0f7;
+}
+
+/* ---------- 登录/注册 ---------- */
+.app-auth-hint {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 12px;
+  color: #5d7a90;
+}
+.app-auth-link {
+  color: #96e0f7;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.app-auth-link:hover {
+  color: #f89d51;
+}
+.app-code-row {
+  display: flex;
+  gap: 8px;
+}
+.app-code-row .app-input {
+  flex: 1;
+}
+.app-code-row .app-btn {
+  white-space: nowrap;
+}
+
+/* ---------- 报告目击：类型选择 ---------- */
+.app-type-row {
+  display: flex;
+  gap: 8px;
+}
+.app-type-opt {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 8px;
+  border: 2px solid rgba(150, 224, 247, 0.4);
+  background: #0d0d0d;
+  color: #7fa8c2;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+.app-type-opt input {
+  display: none;
+}
+.app-type-opt img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+.app-type-opt:hover {
+  border-color: #96e0f7;
+  color: #96e0f7;
+}
+.app-type-opt.is-active {
+  border-color: #96e0f7;
+  background: rgba(150, 224, 247, 0.12);
+  color: #ffffff;
+}
+
+/* ---------- 点选模式：隐藏弹窗露出地图 ---------- */
+.app-modal-overlay.is-picking {
+  display: none;
+}
+
+/* ---------- 地图点选提示条 ---------- */
+#app-pick-banner {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-140px);
+  z-index: 2600;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 18px;
+  background: #000;
+  border: 2px solid #96e0f7;
+  color: #96e0f7;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 0 0 2px #000, 0 8px 30px rgba(0, 0, 0, 0.6);
+  transition: transform 0.24s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.2s ease, visibility 0.2s;
+  font-family: "PF Videotext Pro", "Microsoft YaHei", sans-serif;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+#app-pick-banner.is-visible {
+  transform: translateX(-50%) translateY(0);
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+#app-pick-banner .app-btn {
+  height: 34px;
+  padding: 0 12px;
+  background-size: 72px 34px;
+  font-size: 12px;
+}
+#app-pick-banner .app-btn::before,
+#app-pick-banner .app-btn::after {
+  background-size: 9px 34px;
+}
+body.app-picking {
+  cursor: crosshair !important;
+}
+body.app-picking #map-view,
+body.app-picking .map-canvas,
+body.app-picking .amap-container {
+  cursor: crosshair !important;
+}
+#app-picked-coords {
+  color: #5d7a90;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* ---------- 图片上传 ---------- */
+.app-upload-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 8px;
+}
+.app-upload-box {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border: 2px dashed rgba(150, 224, 247, 0.4);
+  background: #0d0d0d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3d4d5e;
+  font-size: 26px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.15s ease;
+}
+.app-upload-box:hover {
+  border-color: #96e0f7;
+  color: #96e0f7;
+}
+.app-upload-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.app-upload-box .app-upload-del {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 20px;
+  height: 20px;
+  border: 0;
+  background: rgba(255, 107, 107, 0.9);
+  color: #fff;
+  font-size: 11px;
+  line-height: 1;
+  cursor: pointer;
+}
+.app-upload-box .app-upload-del:hover {
+  background: #ff6b6b;
+}
+
+/* ---------- 我的记录 ---------- */
+.app-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.app-list-item {
+  display: flex;
+  gap: 12px;
+  padding: 10px;
+  border: 2px solid rgba(150, 224, 247, 0.25);
+  background: #121212;
+  transition: border-color 0.15s ease;
+}
+.app-list-item:hover {
+  border-color: rgba(248, 157, 81, 0.5);
+}
+.app-list-item__thumb {
+  width: 76px;
+  height: 57px;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: #0d0d0d;
+  border: 2px solid rgba(150, 224, 247, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 20px;
+  cursor: pointer;
+}
+.app-list-item__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.app-list-item__body {
+  flex: 1;
+  min-width: 0;
+}
+.app-list-item__title {
+  font-size: 14px;
+  color: #96e0f7;
+  cursor: pointer;
+  margin: 0 0 3px;
+  letter-spacing: 0.05em;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.app-list-item__title:hover {
+  color: #f89d51;
+}
+.app-list-item__meta {
+  font-size: 11px;
+  color: #5d7a90;
+  margin: 0 0 4px;
+}
+.app-list-item__desc {
+  font-size: 12px;
+  color: #9fbdd3;
+  margin: 0 0 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.app-list-item__actions {
+  display: flex;
+  gap: 6px;
+}
+.app-list-item__actions .app-btn {
+  height: 34px;
+  padding: 0 12px;
+  background-size: 72px 34px;
+  font-size: 11px;
+}
+.app-list-item__actions .app-btn::before,
+.app-list-item__actions .app-btn::after {
+  background-size: 9px 34px;
+}
+.app-list-empty {
+  text-align: center;
+  padding: 34px 10px;
+  color: #5d7a90;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
+.app-loading {
+  text-align: center;
+  padding: 20px;
+  color: #96e0f7;
+  font-size: 13px;
+}
+.app-loading::after {
+  content: "...";
+  animation: app-dots 1.2s steps(4) infinite;
+}
+@keyframes app-dots {
+  0% { content: ""; }
+  25% { content: "."; }
+  50% { content: ".."; }
+  75% { content: "..."; }
+}
+
+/* ---------- 位置信息行 ---------- */
+.app-loc-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 6px;
+}
+.app-loc-row .app-input {
+  flex: 1;
+}
+.app-loc-coords {
+  font-size: 11px;
+  color: #5d7a90;
+}
+
+/* ---------- 用户面板（菜单内 头像+名字） ---------- */
+.app-user-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 6px 4px 2px;
+}
+.app-user-panel__avatar {
+  width: 84px;
+  height: 84px;
+  background: #0d0d0d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.app-user-panel__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+.app-user-panel__name {
+  font-size: 18px;
+  color: #96e0f7;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.app-user-panel__email {
+  font-size: 12px;
+  color: #5d7a90;
+  margin-bottom: 16px;
+}
+.app-user-panel__stats {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 18px;
+}
+.app-user-panel__stat {
+  flex: 1;
+  padding: 10px 6px;
+  border: 2px solid rgba(150, 224, 247, 0.35);
+  background: #0d0d0d;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.app-user-panel__stat b {
+  font-size: 20px;
+  color: #ffffff;
+}
+.app-user-panel__stat span {
+  font-size: 11px;
+  color: #96e0f7;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.app-user-panel__actions {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+.app-user-panel__actions .app-btn {
+  flex: 1;
+}
+
+/* ---------- 点位卡片收藏按钮（星形，右上角） ---------- */
+.app-fav-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 30;
+  width: 26px;
+  height: 26px;
+  border: 1px solid rgba(150, 224, 247, 0.6);
+  background: rgba(10, 14, 18, 0.92);
+  color: #96e0f7;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-family: inherit;
+  transition: all 0.15s ease;
+}
+.app-fav-btn:hover {
+  color: #f89d51;
+  border-color: #f89d51;
+  transform: scale(1.1);
+}
+.app-fav-btn.is-faved {
+  color: #f89d51;
+  border-color: rgba(248, 157, 81, 0.8);
+  background: rgba(248, 157, 81, 0.14);
+}
+
+/* ---------- 菜单内用户面板项：蜘蛛侠小头像 + 名字 ---------- */
+.app-menu-avatar {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  vertical-align: middle;
+  margin-right: 8px;
+  image-rendering: pixelated;
+}
+
+/* ---------- 活动日志空状态 ---------- */
+#activity-log-list:empty::after {
+  content: "暂无目击记录" "\a" "发布第一条目击后会显示在这里";
+  white-space: pre-line;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  color: #5d7a90;
+  font-family: "PF Videotext Pro", "Microsoft YaHei", sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 2.2;
+}
+
+/* ---------- 小屏幕 ---------- */
+@media (max-width: 768px) {
+  .app-modal {
+    grid-template-columns: 27px 1fr 27px;
+    grid-template-rows: 27px 1fr 40px 5px;
+    width: 94vw;
+  }
+  .app-fr--t-l,
+  .app-fr--t-r {
+    background-size: 27px 27px;
+  }
+  .app-fr--t-c {
+    background-size: 92px 27px;
+  }
+  .app-fr--m-l,
+  .app-fr--m-r {
+    background-size: 27px 100px;
+  }
+  .app-fr--b2-l,
+  .app-fr--b2-r {
+    background-size: 27px 40px;
+  }
+  .app-fr--b2-c {
+    background-size: 95px 40px;
+  }
+  .app-fr--b1-l,
+  .app-fr--b1-r {
+    background-size: 27px 5px;
+  }
+  .app-fr--b1-c {
+    background-size: 27px 5px;
+  }
+}
+
+/* 内容区滚动条（黑色背景上适配） */
+.app-modal__body::-webkit-scrollbar {
+  width: 7px;
+}
+.app-modal__body::-webkit-scrollbar-track {
+  background: #000;
+}
+.app-modal__body::-webkit-scrollbar-thumb {
+  background: #96e0f7;
+  border-radius: 0;
+}
+
+/* ---------- 底部滚动条「分享到社区」可点击 ---------- */
+.green-base-ticker {
+  pointer-events: auto !important;
+}
+.green-base-ticker-track {
+  cursor: pointer;
+}
+
+
+
+/* ---------- 底部滚动字幕条（.ticker）下划线：仅「分享到社区」文字显示 ---------- */
+.ticker-track {
+  cursor: default; /* 非分享文字不显示手型 */
+}
+.ticker-track.is-share {
+  text-decoration: underline;
+  text-decoration-color: rgba(150, 224, 247, 0.8);
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+/* ---------- 地图 pin 卡片：预览图完整显示 + 左上角张数角标 ---------- */
+.pin-card-dyn__image {
+  background: #000; /* contain 留边时与网站黑底统一 */
+}
+.pin-card-dyn__image-img {
+  object-fit: contain; /* 完整显示，不再上下裁剪 */
+}
+.app-img-count {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  z-index: 5;
+  background: #000;
+  color: #96e0f7;
+  font-size: 10px;
+  line-height: 1;
+  padding: 3px 5px;
+  border: 2px solid #96e0f7;
+  letter-spacing: 0.06em;
+  pointer-events: none;
+}
+
+/* ---------- 目击详情左侧媒体区：无图蜘蛛侠 logo + 角标 ---------- */
+.content-left.app-no-media {
+  pointer-events: none; /* 无图时左侧不可点（避免打开空白灯箱） */
+}
+.app-detail-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  z-index: 1;
+}
+
+/* ---------- 底部 ticker 任意加载状态可点 ---------- */
+.ticker {
+  position: relative;
+  z-index: 250; /* 高于 preloader(200) 低于弹窗(3000)，任何状态可见可点 */
+}
+
+
+
+
+/* ---------- 弹窗翻转（点位在顶部时弹窗在下方，箭头朝上） ---------- */
+.pin-card-wrap.is-below .pin-card-dyn__pointer {
+  top: calc(-1 * var(--pin-card-pixel) + 1px);
+  bottom: auto;
+  transform: translate(-50%) rotate(180deg);
+}

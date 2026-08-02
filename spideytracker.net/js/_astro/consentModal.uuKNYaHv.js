@@ -1,0 +1,1 @@
+function i(o){const t=window,e=t.consentHelper;if(!e)return;const n=t.siteInit?.consentModals?.[o];n&&(n.header!==void 0&&(e.consentDialogHeaderText=n.header),n.content!==void 0&&(e.consentDialogDefaultContent=n.content))}export{i as a};
