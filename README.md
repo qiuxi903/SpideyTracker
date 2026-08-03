@@ -36,7 +36,7 @@ node server/server.js
 ```bash
 tar -xzf spidey-tracker-deploy.tar.gz
 cd spidey-tracker-deploy
-./install.sh   # 自动构建 MySQL + App 容器
+./install.sh   # 自动构建 App 容器
 # 访问 http://服务器IP:8899
 ```
 
